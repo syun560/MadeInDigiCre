@@ -12,6 +12,6 @@ class Game {
 	Scene scene;
 public:
 	Game();
-	void Update();
+	int Update();
 	void Draw();
 };

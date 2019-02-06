@@ -5,7 +5,8 @@ MainScene::MainScene() {
 	ball[0].SetSpeed(0);
 }
 
-void MainScene::Update() {
+int MainScene::Update() {
+	if (Input::Key(KEY_INPUT_ESCAPE) == 1) return -1;
 	if (Input::Key(KEY_INPUT_RIGHT) > 0) ball[0].Move(0.0);
 	else if (Input::Key(KEY_INPUT_LEFT) > 0) ball[0].Move(DX_PI);
 	else if (Input::Key(KEY_INPUT_DOWN) > 0) ball[0].Move(0.5 * DX_PI);
@@ -18,6 +19,7 @@ void MainScene::Update() {
 	for (int i = 1; i < BALL_NUM; i++) {
 		if (ball[i].IsCollided(ball[0])) printfDx("‚Ô‚Â‚©‚Á‚½‚æI");
 	}
+	return 0;
 }
 
 void MainScene::Draw(){

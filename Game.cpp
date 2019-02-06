@@ -4,15 +4,17 @@ Game::Game() {
 	scene = TITLE;
 }
 
-void Game::Update() {
+int Game::Update() {
 	switch (scene) {
 	case TITLE:
 		if(title.Update() == 1) scene = MAIN;
+		else if (title.Update() == -1) return -1;
 		break;
 	case MAIN:
-		mainScene.Update();
+		if(mainScene.Update() == -1) scene = TITLE;
 		break;
 	}
+	return 0;
 }
 
 void Game::Draw() {

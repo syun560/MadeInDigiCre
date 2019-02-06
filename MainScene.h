@@ -8,6 +8,6 @@ class MainScene {
 	Ball ball[BALL_NUM];
 public:
 	MainScene();
-	void Update();
+	int Update();
 	void Draw();
 };

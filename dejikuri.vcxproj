@@ -120,16 +120,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="MyDx.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MyDx.h" />
+    <ClInclude Include="Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

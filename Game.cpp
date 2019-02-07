@@ -10,9 +10,12 @@ int Game::Update() {
 	case TITLE:
 		t = title.Update();
 		if (t == -1) return -1;
-		else if(t == 1) {
+		else if (t == 0) return 0;
+		else {
 			scene = MAIN;
-			gameScene = new Scene1();
+			if(t = 1) gameScene = new Scene1();
+			else if (t = 2) gameScene = new Scene2();
+			else if (t = 3) gameScene = new Scene3();
 		}
 		break;
 	case MAIN:

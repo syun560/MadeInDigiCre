@@ -19,7 +19,7 @@ void BaseScene::Miss() {
 
 void BaseScene::Draw() {
 	// カウントダウン
-	DrawFormatString(0, 0, MyDx::WHITE, "%d", time);
+	DrawFormatString(0, 0, MyDx::WHITE, "%d", time/60);
 	if (state != PLAYING) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 122);
 		DrawBox(50,50,MyDx::FMX-50,MyDx::FMY-50,MyDx::WHITE,TRUE);

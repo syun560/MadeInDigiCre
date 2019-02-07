@@ -2,8 +2,8 @@
 
 Ball::Ball() {
 	vx = vy = 0.0;
-	x = GetRand(MyDx::FMX);
-	y = GetRand(MyDx::FMY);
+	x = 20 + GetRand(MyDx::FMX - 40);
+	y = 20 + GetRand(MyDx::FMY - 40);
 	ang = DX_PI * 2.0 * GetRand(1000) / 1000.0;
 	spd = 3.0;
 	r = 10.0;
@@ -27,8 +27,8 @@ void Ball::Update() {
 	if (useGravity) vy += 0.001;
 	x += vx;
 	y += vy;
-	if ((x < 0 || x > MyDx::FMX) && useBounce) vx *= -1.0;
-	if ((y < 0 || y > MyDx::FMY) && useBounce) vy *= -1.0;
+	if ((x < 20 || x > MyDx::FMX - 20) && useBounce) vx *= -1.0;
+	if ((y < 20 || y > MyDx::FMY - 20) && useBounce) vy *= -1.0;
 	ang = atan2(vy, vx);
 }
 
@@ -50,4 +50,9 @@ void Ball::Move(double angle) {
 void Ball::SetImg(int handle, double dsize) {
 	img = handle;
 	size = dsize;
+}
+
+void Ball::SetPos(int dx, int dy) {
+	x = dx;
+	y = dy;
 }

@@ -4,14 +4,19 @@
 #include <stdlib.h>
 
 Scene1::Scene1() {
-	ball[0].SetSpeed(0);
+	// ロード
 	for (int i = 0; i < IMG_MAX; ++i) {
 		char filepass[100];
 		sprintf_s(filepass, "dat/img/cat%02d.png", i + 1);
 		img[i] = LoadGraph(filepass);
 	}
-	for (int i = 0; i < BALL_NUM; ++i) {
+
+	bg = LoadGraph("dat/img/bg_ground.png");
+
+	// 
+	for (int i = 1; i < BALL_NUM; ++i) {
 		ball[i].SetImg(img[GetRand(IMG_MAX -1)], 0.2);
+		ball[i].SetSpeed(1 + GetRand(3));
 	}
 }
 
@@ -22,6 +27,7 @@ Scene1::~Scene1() {
 }
 
 int Scene1::Update() {
+	BaseScene::Update();
 	if (Input::Key(KEY_INPUT_ESCAPE) == 1) return -1;
 	if (Input::Key(KEY_INPUT_RIGHT) > 0) ball[0].Move(0.0);
 	else if (Input::Key(KEY_INPUT_LEFT) > 0) ball[0].Move(DX_PI);
@@ -34,8 +40,7 @@ int Scene1::Update() {
 	}
 	for (int i = 1; i < BALL_NUM; i++) {
 		if (ball[i].IsCollided(ball[0])) {
-			// タイトルに戻る
-			return -1;
+			BaseScene::Miss();
 		}
 	}
 	return 0;
@@ -45,4 +50,5 @@ void Scene1::Draw(){
 	for (int i = 0; i < BALL_NUM; i++) {
 		ball[i].Draw();
 	}
+	BaseScene::Draw();
 }

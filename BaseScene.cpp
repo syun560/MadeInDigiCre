@@ -8,13 +8,17 @@ BaseScene::BaseScene() {
 int BaseScene::Update() {
 	if (state == PLAYING) time--;
 	if (time == 0) {
-		state = CLEARED;
+		state = MISS;
 	}
 	return 0;
 }
 
 void BaseScene::Miss() {
 	state = MISS;
+}
+
+void BaseScene::Clear() {
+	state = CLEARED;
 }
 
 void BaseScene::Draw() {

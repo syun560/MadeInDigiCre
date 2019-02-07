@@ -13,6 +13,7 @@ class BaseScene {
 public:
 	BaseScene();
 	void Miss();
+	void Clear();
 	virtual int Update();
 	virtual void Draw();
 };

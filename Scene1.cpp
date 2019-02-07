@@ -40,6 +40,7 @@ int Scene1::Update() {
 	else if (Input::Key(KEY_INPUT_UP) > 0) ball[0].Move(1.5 * DX_PI);
 	else ball[0].SetSpeed(0);
 
+	if (ball[0].GetX() < 0) BaseScene::Clear();
 	for (int i = 0; i < BALL_NUM; i++) {
 		ball[i].Update();
 	}

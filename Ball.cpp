@@ -56,3 +56,7 @@ void Ball::SetPos(int dx, int dy) {
 	x = dx;
 	y = dy;
 }
+
+int Ball::GetX() {
+	return x;
+}

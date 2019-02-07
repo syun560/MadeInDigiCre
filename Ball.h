@@ -17,4 +17,6 @@ public:
 	void SetSpeed(int speed);
 	void SetImg(int handle, double size=1.0);
 	void SetPos(int x, int y);
+
+	int GetX();
 };

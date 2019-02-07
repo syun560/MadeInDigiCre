@@ -17,7 +17,9 @@ int MainScene::Update() {
 		ball[i].Update();
 	}
 	for (int i = 1; i < BALL_NUM; i++) {
-		if (ball[i].IsCollided(ball[0])) printfDx("‚Ô‚Â‚©‚Á‚½‚æI");
+		if (ball[i].IsCollided(ball[0])) {
+			
+		}
 	}
 	return 0;
 }

@@ -7,7 +7,7 @@ class Game {
 	enum Scene {
 		TITLE, MAIN,
 	};
-	MainScene mainScene;
+	BaseScene* gameScene;
 	Title title;
 	Scene scene;
 public:

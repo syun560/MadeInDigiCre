@@ -5,13 +5,21 @@ Game::Game() {
 }
 
 int Game::Update() {
+	int t;
 	switch (scene) {
 	case TITLE:
-		if(title.Update() == 1) scene = MAIN;
-		else if (title.Update() == -1) return -1;
+		t = title.Update();
+		if (t == -1) return -1;
+		else if(t == 1) {
+			scene = MAIN;
+			gameScene = new MainScene();
+		}
 		break;
 	case MAIN:
-		if(mainScene.Update() == -1) scene = TITLE;
+		if (gameScene->Update() == -1) {
+			delete gameScene;
+			scene = TITLE;
+		}
 		break;
 	}
 	return 0;
@@ -23,7 +31,7 @@ void Game::Draw() {
 		title.Draw();
 		break;
 	case MAIN:
-		mainScene.Draw();
+		gameScene->Draw();
 		break;
 	}
 }

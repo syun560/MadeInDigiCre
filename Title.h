@@ -2,7 +2,7 @@
 #include "MyDx.h"
 
 class Title {
-	int select;
+	int selectmode, selectgame;
 public:
 	Title();
 	int Update();

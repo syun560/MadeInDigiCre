@@ -26,7 +26,7 @@ DXライブラリ標準のマウスやキーボードなどの入力関連の関
 
 - BaseScene.cpp
 
-それぞれのSceneの抽象クラスです。
+それぞれのSceneの抽象クラスです。また、Sceneに共通の処理のBaseScene::Update()、BaseScene::Draw()をそれぞれのシーンで呼び出します。
 
 - ball.cpp
 

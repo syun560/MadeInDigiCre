@@ -7,16 +7,8 @@ Ball::Ball() {
 	ang = DX_PI * 2.0 * GetRand(1000) / 1000.0;
 	spd = 3.0;
 	r = 10.0;
+	size = 1.0;
 	col = MyDx::GetRandColor();
-	useGravity = useAirResist = false;
-	useBounce = true;
-}
-
-Ball::Ball(double dx, double dy, double dr) {
-	x = dx; y = dy; r = dr;
-	vx = vy = 0.0;
-	ang = DX_PI * 2.0 * GetRand(1000) / 1000.0;
-	spd = 1.0;
 	useGravity = useAirResist = false;
 	useBounce = true;
 }
@@ -40,10 +32,10 @@ void Ball::Update() {
 	ang = atan2(vy, vx);
 }
 
-void Ball::Draw(int img) const{
+void Ball::Draw() const{
 	//if (img == 0) DrawCircleAA((float)x, (float)y, (float)r, 100, col, TRUE);
 	if (img == 0) DrawCircle((int)x, (int)y, (int)r, col, TRUE);
-	else DrawRotaGraphF((float)x, (float)y, r * 0.05, 0.0, img, TRUE);
+	else DrawRotaGraphF((float)x, (float)y, size, 0.0, img, TRUE);
 }
 
 void Ball::SetSpeed(int speed) {
@@ -53,4 +45,9 @@ void Ball::SetSpeed(int speed) {
 void Ball::Move(double angle) {
 	ang = angle;
 	spd = 5.0;
+}
+
+void Ball::SetImg(int handle, double dsize) {
+	img = handle;
+	size = dsize;
 }

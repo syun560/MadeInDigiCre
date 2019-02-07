@@ -5,14 +5,15 @@
 class Ball {
 	double x, y, vx, vy, ang, spd, r;
 	bool useGravity, useAirResist, useBounce;
-	int col;
+	int col, img;
+	double size;
 public:
 	Ball();
-	Ball(double x, double y, double r);
 	void Update();
-	void Draw(int img=0) const;
+	void Draw() const;
 	bool IsCollided(const Ball&) const;
 
 	void Move(double angle);
 	void SetSpeed(int speed);
+	void SetImg(int handle, double size=1.0);
 };

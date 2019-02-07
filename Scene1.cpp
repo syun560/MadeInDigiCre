@@ -1,11 +1,27 @@
-#include "MainScene.h"
+#include "Scene1.h"
 #include "Input.h"
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
 
-MainScene::MainScene() {
+Scene1::Scene1() {
 	ball[0].SetSpeed(0);
+	for (int i = 0; i < IMG_MAX; ++i) {
+		char filepass[100];
+		sprintf_s(filepass, "dat/img/cat%02d.png", i + 1);
+		img[i] = LoadGraph(filepass);
+	}
+	for (int i = 0; i < BALL_NUM; ++i) {
+		ball[i].SetImg(img[GetRand(IMG_MAX -1)], 0.2);
+	}
 }
 
-int MainScene::Update() {
+Scene1::~Scene1() {
+	for (int i = 0; i < IMG_MAX; ++i) {
+		DeleteGraph(img[i]);
+	}
+}
+
+int Scene1::Update() {
 	if (Input::Key(KEY_INPUT_ESCAPE) == 1) return -1;
 	if (Input::Key(KEY_INPUT_RIGHT) > 0) ball[0].Move(0.0);
 	else if (Input::Key(KEY_INPUT_LEFT) > 0) ball[0].Move(DX_PI);
@@ -25,7 +41,7 @@ int MainScene::Update() {
 	return 0;
 }
 
-void MainScene::Draw(){
+void Scene1::Draw(){
 	for (int i = 0; i < BALL_NUM; i++) {
 		ball[i].Draw();
 	}

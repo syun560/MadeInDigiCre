@@ -13,8 +13,8 @@ int Title::Update() {
 		if (Input::Key(KEY_INPUT_UP) == 1) selectmode = 0;
 	}
 	else {
-		if (Input::Key(KEY_INPUT_DOWN) == 1) selectgame = 1;
-		if (Input::Key(KEY_INPUT_UP) == 1) selectgame = 0;
+		if (Input::Key(KEY_INPUT_DOWN) == 1 && selectgame != 2) selectgame++;
+		if (Input::Key(KEY_INPUT_UP) == 1 && selectgame != 0) selectgame--;
 	}
 
 	if (selectmode == 1) {
@@ -43,6 +43,7 @@ void Title::Draw() {
 		static int LIST2_Y = LIST_Y + 20;
 		DrawFormatString(LIST2_X, LIST2_Y, MyDx::WHITE, "game1");
 		DrawFormatString(LIST2_X, LIST2_Y + 20, MyDx::WHITE, "game2");
+		DrawFormatString(LIST2_X, LIST2_Y + 40, MyDx::WHITE, "game3");
 		DrawBox(LIST2_X, LIST2_Y + selectgame* 20, LIST2_X + LIST_WIDTH, LIST2_Y + (selectgame + 1) * 20, MyDx::YELLOW, FALSE);
 	}
 	DrawFormatString(1, 1, MyDx::WHITE, "mode = %d, game = %d", selectmode, selectgame);

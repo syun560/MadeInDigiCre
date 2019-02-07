@@ -12,7 +12,7 @@ int Game::Update() {
 		if (t == -1) return -1;
 		else if(t == 1) {
 			scene = MAIN;
-			gameScene = new MainScene();
+			gameScene = new Scene1();
 		}
 		break;
 	case MAIN:

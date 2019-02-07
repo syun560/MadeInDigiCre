@@ -1,6 +1,6 @@
 #pragma once
 #include "MyDx.h"
-#include "MainScene.h"
+#include "Scene1.h"
 #include "Title.h"
 
 class Game {

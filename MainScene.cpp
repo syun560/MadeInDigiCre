@@ -18,7 +18,8 @@ int MainScene::Update() {
 	}
 	for (int i = 1; i < BALL_NUM; i++) {
 		if (ball[i].IsCollided(ball[0])) {
-			
+			// ƒ^ƒCƒgƒ‹‚É–ß‚é
+			return -1;
 		}
 	}
 	return 0;

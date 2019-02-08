@@ -53,7 +53,7 @@ int Scene1::Update() {
 }
 
 void Scene1::Draw(){
-	DrawGraph(0, 0, bg, TRUE);
+	DrawGraph(-20, MyDx::FMY/2 + 50, bg, TRUE);
 	for (int i = 0; i < BALL_NUM; i++) {
 		ball[i].Draw();
 	}

@@ -19,7 +19,7 @@ Scene2::Scene2() {
 	ball[0].SetSpeed(0);
 	for (int i = 1; i < BALL_NUM; ++i) {
 		ball[i].SetImg(img[1 + GetRand(IMG_MAX - 2)], 0.2);
-		ball[i].SetSpeed(1 + GetRand(2));
+		ball[i].SetSpeed(1 + GetRand(5));
 	}
 }
 

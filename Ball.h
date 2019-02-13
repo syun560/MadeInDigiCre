@@ -7,6 +7,7 @@ class Ball {
 	bool useGravity, useAirResist, useBounce;
 	int col, img;
 	double size;
+
 public:
 	Ball();
 	void Update();
@@ -19,4 +20,10 @@ public:
 	void SetPos(int x, int y);
 
 	int GetX();
+};
+
+class FireBall{
+	Ball ball;
+public:
+
 };

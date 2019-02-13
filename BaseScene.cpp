@@ -1,8 +1,13 @@
 #include "BaseScene.h"
 
 BaseScene::BaseScene() {
-	time = 60 * 5; // 60FPSの場合5秒
+	time = 60 * 7; // 60FPSの場合7秒
 	state = PLAYING;
+	font = CreateFontToHandle(NULL, 40, 3);
+}
+
+BaseScene::~BaseScene() {
+	DeleteFontToHandle(font);
 }
 
 int BaseScene::Update() {
@@ -23,7 +28,9 @@ void BaseScene::Clear() {
 
 void BaseScene::Draw() {
 	// カウントダウン
-	DrawFormatString(0, 0, MyDx::WHITE, "%d", time/60);
+	int second = time / 60;
+	if(second > 3) DrawFormatStringToHandle(0, 0, MyDx::WHITE, font, "%d", second);
+	else DrawFormatStringToHandle(0, 0, MyDx::RED, font, "%d", second);
 	if (state != PLAYING) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 122);
 		DrawBox(50,50,MyDx::FMX-50,MyDx::FMY-50,MyDx::WHITE,TRUE);

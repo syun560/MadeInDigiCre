@@ -5,7 +5,7 @@ Game::Game() {
 }
 
 int Game::Update() {
-	int t;
+	static int t;
 	switch (scene) {
 	case TITLE:
 		t = title.Update();
@@ -13,9 +13,9 @@ int Game::Update() {
 		else if (t == 0) return 0;
 		else {
 			scene = MAIN;
-			if(t = 1) gameScene = new Scene1();
-			else if (t = 2) gameScene = new Scene2();
-			else if (t = 3) gameScene = new Scene3();
+			if(t == 1) gameScene = new Scene1();
+			else if (t == 2) gameScene = new Scene2();
+			else if (t == 3) gameScene = new Scene3();
 		}
 		break;
 	case MAIN:
@@ -27,9 +27,9 @@ int Game::Update() {
 		else if (g == -2) {
 			delete gameScene;
 			scene = MAIN;
-			if (t = 1) gameScene = new Scene1();
-			else if (t = 2) gameScene = new Scene2();
-			else if (t = 3) gameScene = new Scene3();
+			if (t == 1) gameScene = new Scene1();
+			else if (t == 2) gameScene = new Scene2();
+			else if (t == 3) gameScene = new Scene3();
 		}
 		break;
 	}

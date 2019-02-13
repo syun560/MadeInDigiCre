@@ -10,8 +10,10 @@ class BaseScene {
 	};
 	int time;
 	State state;
+	int font;
 public:
 	BaseScene();
+	~BaseScene();
 	void Miss();
 	void Clear();
 	virtual int Update();

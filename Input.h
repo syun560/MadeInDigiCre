@@ -2,15 +2,15 @@
 #include "MyDx.h"
 
 class Input{
-	static int mKey[256];
-	static char mKeyBuf[256];
-	static int mMouseX,mMouseY,mMouseL,mMouseR,mMouseM;
+	static int key[256];
+	static char keyBuf[256];
+	static int mouseX, mouseY, mouseL, mouseR, mouseM;
 public:
 	static void Mouse(int*,int*);
 	static int MouseL();
 	static int MouseR();
 	static int MouseM();
 	static int Key(int);
-	static void update();
-	static void draw();
+	static void Update();
+	static void Draw();
 };

@@ -1,61 +1,52 @@
 #include "Scene2.h"
 #include "Input.h"
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdlib.h>
+
+static const char question[50]{
+	"芝浦工業大学の英語表記は？"
+};
+
+static const char answer[4][50]{
+	"SCE","SIT", "SET", "SCP"
+};
 
 Scene2::Scene2() {
-	// ロード
-	img[0] = LoadGraph("dat/img/fish_sakana_sake.png");
-	for (int i = 1; i < IMG_MAX; ++i) {
-		char filepass[100];
-		sprintf_s(filepass, "dat/img/cat%02d.png", i);
-		img[i] = LoadGraph(filepass);
-	}
-	bg = LoadGraph("dat/img/bg_ground.png");
-
-	// 初期化
-	ball[0].SetImg(img[0], 0.1);
-	ball[0].SetPos(MyDx::FMX + 20, MyDx::FMY / 2);
-	ball[0].SetSpeed(0);
-	for (int i = 1; i < BALL_NUM; ++i) {
-		ball[i].SetImg(img[1 + GetRand(IMG_MAX - 2)], 0.2);
-		ball[i].SetSpeed(1 + GetRand(5));
-	}
+	AnswerNum = 1;
 }
 
 Scene2::~Scene2() {
-	for (int i = 0; i < IMG_MAX; ++i) {
-		DeleteGraph(img[i]);
-	}
-	DeleteGraph(bg);
+	
+}
+
+bool Scene2::JudgeAnswer(int answer) {
+	if (answer == AnswerNum) return true;
+	else return false;
 }
 
 int Scene2::Update() {
 	if (Input::Key(KEY_INPUT_ESCAPE) == 1) return -1;
 	if (Input::Key(KEY_INPUT_R) == 1) return -2;
 	BaseScene::Update();
-	if (Input::Key(KEY_INPUT_RIGHT) > 0) ball[0].Move(0.0);
-	else if (Input::Key(KEY_INPUT_LEFT) > 0) ball[0].Move(DX_PI);
-	else if (Input::Key(KEY_INPUT_DOWN) > 0) ball[0].Move(0.5 * DX_PI);
-	else if (Input::Key(KEY_INPUT_UP) > 0) ball[0].Move(1.5 * DX_PI);
-	else ball[0].SetSpeed(0);
 
-	if (ball[0].GetX() < 0) BaseScene::Clear();
-	for (int i = 0; i < BALL_NUM; i++) {
-		ball[i].Update();
-	}
-	for (int i = 1; i < BALL_NUM; i++) {
-		if (ball[i].IsCollided(ball[0])) {
-			BaseScene::Miss();
-		}
+	int ans = -1;
+	if (Input::Key(KEY_INPUT_UP) == 1) ans = 0;
+	if (Input::Key(KEY_INPUT_DOWN) == 1) ans = 1;
+	if (Input::Key(KEY_INPUT_RIGHT) == 1) ans = 2;
+	if (Input::Key(KEY_INPUT_LEFT) == 1) ans = 3;
+	if (ans != -1) {
+		if (JudgeAnswer(ans)) BaseScene::Clear();
+		else BaseScene::Miss();
 	}
 	return 0;
 }
 
 void Scene2::Draw() {
-	DrawGraph(-20, MyDx::FMY / 2 + 50, bg, TRUE);
-	for (int i = 0; i < BALL_NUM; i++) {
-		ball[i].Draw();
-	}
+	DrawFormatString(40, 120, MyDx::WHITE, "%s", question);
+
+	static const int ANSWER_Y = 300;
+	static const int OFFSET = 50;
+	DrawFormatString(MyDx::FMX / 2, ANSWER_Y - OFFSET, MyDx::WHITE, "[↑] %s", answer[0]);
+	DrawFormatString(MyDx::FMX / 2, ANSWER_Y + OFFSET, MyDx::WHITE, "[↓] %s", answer[1]);
+	DrawFormatString(MyDx::FMX / 2 + OFFSET, ANSWER_Y, MyDx::WHITE, "[→] %s", answer[2]);
+	DrawFormatString(MyDx::FMX / 2 - OFFSET, ANSWER_Y, MyDx::WHITE, "[←] %s", answer[3]);
 	BaseScene::Draw();
 }

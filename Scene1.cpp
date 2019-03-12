@@ -14,7 +14,6 @@ Scene1::Scene1() {
 	bg = LoadGraph("dat/img/bg_ground.png");
 
 	// ‰Šú‰»
-	
 	ball[0].SetImg(img[0], 0.1);
 	ball[0].SetPos(MyDx::FMX + 20, MyDx::FMY/2);
 	ball[0].SetSpeed(0);

@@ -1,14 +1,23 @@
 #pragma once
 #include "MyDx.h"
-#include "Ball.h"
+#include "Box.h"
 #include "BaseScene.h"
+#include "TextBox.h"
+
+struct Powder {
+	int x, y;
+	int color;
+	bool flag;
+};
 
 class Scene3 : public BaseScene {
-	static const int BALL_NUM = 20;
-	static const int IMG_MAX = 15;
-	int img[IMG_MAX];
-	int bg;
-	Ball ball[BALL_NUM];
+	Powder* p;
+	TextBox textBox;
+	Box* box;
+	int powder_num;
+	int box_num;
+	int cnt;
+	int x, y;
 public:
 	Scene3();
 	~Scene3();
